@@ -1,0 +1,4 @@
+I am mindful of an objection that might be raised.
+The central notion in information theory is that of entropy.
+Briefly, entropy is a measure of the unpredictable character of a set of objects.
+The more variation and difference there is, the higher the entropy, while the less variation there is, the less the entropy there is.

@@ -3,8 +3,15 @@ import random
 import os
 
 def compare_word_order(orig_file,clean_up=True):
-  """compares the original version of the text in a file with the randomized
-  text for each verse"""
+  """Compares the original version of the text in a file with the shuffled
+  text for each verse
+  
+  ARGUMENTS:
+  ==========
+  orig_file: orig file in the paralysis format (verse number TAB verse text)
+  clean_up: whether the shuffled and zip files should be removed (True) at the
+            end of the calculations or not (False)
+  """
   
   # read in original file (with verse numbers) and save the text in original
   # and shuffled form as a list of verses with each verse consisting of a
@@ -22,6 +29,7 @@ def compare_word_order(orig_file,clean_up=True):
       random.shuffle(rand_text)
       rand_text_verses.append(rand_text)
       
+  # create a temporary folder where the temp files will be stored
   tmp_dir = "tmp/"
   try:
     os.mkdir(tmp_dir)
@@ -48,8 +56,9 @@ def compare_word_order(orig_file,clean_up=True):
   ratio = normal_size/shuffled_size
   diff = shuffled_size - normal_size
   
-  print("Original: {}\nShuffled: {}\nDiff: {}".format(normal_size,
-                                                       shuffled_size,diff))
+  print("Original: {}\nShuffled: {}\nDiff: {}\nRatio: {}".format(normal_size,
+                                                       shuffled_size,diff,
+                                                       ratio))
   
   # clean up
   if clean_up:
@@ -75,4 +84,4 @@ def zip_file(file):
   file_zip.close()
   
 if __name__ == '__main__':
-  compare_word_order("test.txt")
+  compare_word_order("test.txt",False)
